@@ -40,7 +40,7 @@ for i in range(1,len(profit_loss)):
     profit_loss_change_list.append(profit_loss_change)
 #print changes
 
-average_change = sum(changes)/len(changes)
+average_change = sum(proft_loss_change_list)/len(proft_loss_change_list)
 print(f"Average Change: $ {round(average_change,2)} ")
 
 greatest_increase = max(profit_loss_change_list)
