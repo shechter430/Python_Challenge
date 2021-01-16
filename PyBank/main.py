@@ -17,7 +17,7 @@ with open(py_bank_path, newline='') as csvfile:
     #separating header from list
     header = next(csvreader)
 
-    #loop for rest of the rows
+    #loop for rest of the rowsclear
     for row in csvreader:    
         #creating list of dates and profits/losses
         date.append(row[0])
@@ -37,11 +37,12 @@ for i in range(1,len(profit_loss)):
     profit_loss_change = int(profit_loss[i]) - int(profit_loss[i-1])
     profit_loss_change_list.append(profit_loss_change)
 
-#print changes
-    average_change = sum(profit_loss_change_list)/len(profit_loss_change_list)
-    print(f"Average Change: ${round(average_change,2)}")
-    greatest_increase = max(profit_loss_change_list)
-    greatest_decrease = min(profit_loss_change_list)
+average_change = sum(profit_loss_change_list)/len(profit_loss_change_list)
 
-    print(greatest_increase)
-    print(greatest_decrease)
+    #Print average and greatest increase/decrease
+print(f"Average Change: ${round(average_change,2)}")
+greatest_increase = max(profit_loss_change_list)
+greatest_decrease = min(profit_loss_change_list)
+
+print(greatest_increase)
+print(greatest_decrease)
