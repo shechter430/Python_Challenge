@@ -25,11 +25,14 @@ with open(py_bank_path, newline='') as csvfile:
         #calculating total profit/losses
         total_profitloss+=int(row[1])
 
+#Print Statements
+print("Financial Analysis")
+print("-"*20)
 
 #total number of months
 total_months = len(date)
-print(total_months)
-print(total_profitloss)
+print(f"Total Months: {(total_months)}")
+print(f"Total: ${(total_profitloss)}")
 
 #Calculating the profit/loss change and finding average
 profit_loss_change_list = []
@@ -44,5 +47,5 @@ print(f"Average Change: ${round(average_change,2)}")
 greatest_increase = max(profit_loss_change_list)
 greatest_decrease = min(profit_loss_change_list)
 
-print(greatest_increase)
-print(greatest_decrease)
+print(f"Greatest Increase in Profits: ${(greatest_increase)}")
+print(f"Greatest Decrease in Profits: ${(greatest_decrease)}")
