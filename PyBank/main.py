@@ -44,8 +44,15 @@ average_change = sum(profit_loss_change_list)/len(profit_loss_change_list)
 
     #Print average and greatest increase/decrease
 print(f"Average Change: ${round(average_change,2)}")
+
+date.pop(0)
+
 greatest_increase = max(profit_loss_change_list)
 greatest_decrease = min(profit_loss_change_list)
 
-print(f"Greatest Increase in Profits: ${(greatest_increase)}")
-print(f"Greatest Decrease in Profits: ${(greatest_decrease)}")
+increasedate_index = profit_loss_change_list.index(greatest_increase)
+decreasedate_index = profit_loss_change_list.index(greatest_decrease)
+
+print (f"Greatest Increase in Profits: {date[increasedate_index]} (${greatest_increase})")
+print (f"Greatest Decrease in Profits: {date[decreasedate_index]} (${greatest_decrease}")
+
