@@ -1,9 +1,3 @@
-#The total number of votes cast
-#A complete list of candidates who received votes
-#The percentage of votes each candidate won
-#The total number of votes each candidate won
-#The winner of the election based on popular vote.
-
 import os
 import csv
 
@@ -26,5 +20,3 @@ with open(pypoll_path, newline='') as csvfile:
 
 #calculating total number of votes 
 total_votes = len(voter_id)
-
-
