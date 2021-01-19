@@ -2,7 +2,7 @@ import os
 import csv
 
 #Set path for CSV file
-py_bank_path = os.path.join(".", "Resources", "budget_data.csv")
+pybank_path = os.path.join(".", "Resources", "budget_data.csv")
 
 #Initialize date and profit/loss as list
 date = []
@@ -12,7 +12,7 @@ profit_loss = []
 total_profitloss = 0
 
 #Open CSV budget data file
-with open(py_bank_path, newline='') as csvfile:
+with open(pybank_path, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     #separating header from list
     header = next(csvreader)

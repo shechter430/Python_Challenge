@@ -24,5 +24,7 @@ with open(pypoll_path, newline='') as csvfile:
         #separating header 
         header = next(csvreader)
 
-        
+#calculating total number of votes 
+total_votes = len(voter_id)
+
 
