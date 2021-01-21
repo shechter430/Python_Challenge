@@ -12,8 +12,8 @@ pypoll_path = os.path.join(".", "Resources", "election_data.csv")
 
 #initialize lists
 county = []
-candidate = []
-total_votes = 0
+candidate_list = []
+voter_id =[]
 
 #open CSV election data file
 with open(pypoll_path, newline='') as csvfile:
@@ -21,8 +21,23 @@ with open(pypoll_path, newline='') as csvfile:
         #separating header 
         header = next(csvreader)
 
+        #loop through rows to create lists
         for row in csvreader:
-                total_votes += 1
+                voter_id.append(row[0])
+                candidate_list.append(row[2])
+                for x in csvreader:
+                        if x not in candidate_list:
+                                candidate_list.append(x)
+
+
+print(candidate_list)                
+
+#calculating total votes
+total_votes = len(voter_id)
+
+
+
+
 
 
 print(f"Total Votes: {total_votes}")
