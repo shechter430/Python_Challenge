@@ -22,7 +22,7 @@ with open(pypoll_path, newline='') as csvfile:
 
         print("Election Results")
         print("-"*20)
-        
+
         #calculating total votes and printing
         total_votes = len(voter_id)
         print(f"Total Votes: {total_votes}")
@@ -35,7 +35,7 @@ with open(pypoll_path, newline='') as csvfile:
         for vote in candidate_unique:
                 candidate_list[vote] = candidates.count(vote)
         for key, value in candidate_list.items():
-                print(f'{key}: {"{:.2f}".format(float(value/total_votes)*100)}% {value}')
+                print(f'{key}: {"{:.3f}".format(float(value/total_votes)*100)}% {value}')
         
         #determining winner and printing result
         winner = max(candidate_list, key=candidate_list.get)              
@@ -49,6 +49,6 @@ with open(output_path, 'a') as file:
         file.write(f"--------------------\n")
         file.write(f"Total Votes: {total_votes}\n")
         file.write(f"--------------------\n")
-        file.write(f'{key}: {"{:.2f}".format(float(value/total_votes)*100)}% {value}\n')
+        file.write(f'{key}: {"{:.3f}".format(float(value/total_votes)*100)}% {value}\n')
         file.write(f"--------------------\n")
         file.write(f"Winner: {winner}\n")
