@@ -1,9 +1,3 @@
-#The total number of votes cast
-#A complete list of candidates who received votes
-#The percentage of votes each candidate won
-#The total number of votes each candidate won
-#The winner of the election based on popular vote.
-
 import os
 import csv
 
@@ -11,9 +5,9 @@ import csv
 pypoll_path = os.path.join(".", "Resources", "election_data.csv")
 
 #initialize lists
-county = []
-candidate_list = []
-voter_id =[]
+voter_id = []
+candidates = []
+candidate_list = {}
 
 #open CSV election data file
 with open(pypoll_path, newline='') as csvfile:
@@ -24,28 +18,37 @@ with open(pypoll_path, newline='') as csvfile:
         #loop through rows to create lists
         for row in csvreader:
                 voter_id.append(row[0])
-                candidate_list.append(row[2])
-                for x in csvreader:
-                        if x not in candidate_list:
-                                candidate_list.append(x)
+                candidates.append(row[2])
 
+        print("Election Results")
+        print("-"*20)
+        
+        #calculating total votes and printing
+        total_votes = len(voter_id)
+        print(f"Total Votes: {total_votes}")
+        print("-"*20)
 
-print(candidate_list)                
+        #getting each candidate name
+        candidate_unique = set(candidates)
+        
+        #looping through dictionary to determine each candidates vote count, percentage and printing totals
+        for vote in candidate_unique:
+                candidate_list[vote] = candidates.count(vote)
+        for key, value in candidate_list.items():
+                print(f'{key}: {"{:.2f}".format(float(value/total_votes)*100)}% {value}')
+        
+        #determining winner and printing result
+        winner = max(candidate_list, key=candidate_list.get)              
+        print("-"*20)
+        print(f"Winner: {winner}")
 
-#calculating total votes
-total_votes = len(voter_id)
-
-
-
-
-
-
-print(f"Total Votes: {total_votes}")
-
-
-
-
-
-
-
-
+#exporting to txt file
+output_path = os.path.join(".", "Analysis", "analysis_summary.txt")
+with open(output_path, 'a') as file:
+        file.write(f"Election Results\n")
+        file.write(f"--------------------\n")
+        file.write(f"Total Votes: {total_votes}\n")
+        file.write(f"--------------------\n")
+        file.write(f'{key}: {"{:.2f}".format(float(value/total_votes)*100)}% {value}\n')
+        file.write(f"--------------------\n")
+        file.write(f"Winner: {winner}\n")
