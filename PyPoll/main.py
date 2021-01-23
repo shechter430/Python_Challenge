@@ -49,6 +49,7 @@ with open(output_path, 'a') as file:
         file.write(f"--------------------\n")
         file.write(f"Total Votes: {total_votes}\n")
         file.write(f"--------------------\n")
-        file.write(f'{key}: {"{:.3f}".format(float(value/total_votes)*100)}% {value}\n')
+        for key, value in candidate_list.items():
+                file.write(f'{key}: {"{:.3f}".format(float(value/total_votes)*100)}% {value}\n')
         file.write(f"--------------------\n")
         file.write(f"Winner: {winner}\n")
